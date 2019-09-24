@@ -62,7 +62,7 @@ class MuonDisplayerTool(Tool):
     })
 
     def setup(self):
-        self.source: EventSource = self.add_component(
+        self.source = self.add_component(
             EventSource.from_config(parent=self)
         )
         if self.source.input_url == '':
