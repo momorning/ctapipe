@@ -134,7 +134,7 @@ def analyze_muon_event(event):
 
         muonringparam = muonring.fit(x, y, image * clean_mask)
 
-        dist = np.sqrt(np.power(x - muonringparam. ring_center_x, 2)
+        dist = np.sqrt(np.power(x - muonringparam.ring_center_x, 2)
                        + np.power(y - muonringparam.ring_center_y, 2))
         ring_dist = np.abs(dist - muonringparam.ring_radius)
 
@@ -150,6 +150,14 @@ def analyze_muon_event(event):
             x, y, img * (ring_dist < muonringparam.ring_radius * 0.4)
         )
 
+        angle_pix_width = muon_cuts['AngPixW'][dict_index]
+        mask_pixel = img > 0
+        mask_fit = ring_dist < muonringparam.ring_radius * 0.4
+        combined_mask = mask_pixel & mask_fit
+        chisquare = (np.sum((ring_dist[combined_mask]/angle_pix_width)**2))/(sum(combined_mask))
+
+
+        muonringparam.ring_chi2_fit = chisquare
         muonringparam.tel_id = telid
         muonringparam.obs_id = event.dl0.obs_id
         muonringparam.event_id = event.dl0.event_id
