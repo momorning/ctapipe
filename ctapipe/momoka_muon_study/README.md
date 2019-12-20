@@ -6,7 +6,11 @@ This study focuses on testing the fitting algorithms for the muon files. Three n
 - three fits for MC file (FlashCam)
 - three fits for fake muon generation files (FlashCam)
 - optical efficiency difference (LSTCam)
+
 For different camera types, modification in code is required
 
 ### Files in the study
- The notebook read files for the algorithm test. Tested Monte Carlo simulation files were given by my Supervisor, Allison Mitchell.
+ The notebook read files for the algorithm test. Tested Monte Carlo simulation files were given by my Supervisor, Allison Mitchell. If you need them, please contact her.
+
+### Display
+There are commented out comments, which can be useful when you run to have more idea about what is going on.
